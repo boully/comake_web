@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>COMAKE</title>
+  </head>
+<body style="width:800px; margin: 30px auto; background-color: #FFFFFF;">
+
+<div>
+
+<h1>Welcome to COMAKE project</h1>
+<p>existing COMAKE files:</p>
+<ul>
+{{range .}}
+<li><a href="/view/{{.}}">{{.}}<a/> [<a href="/edit/{{.}}">edit</a>]</li>
+{{end}}
+</ul>
+</div>
+
+<body>
+</html>

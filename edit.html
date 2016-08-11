@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>COMAKE</title>
+  </head>
+<body style="width:800px; margin: 30px auto; background-color: #FFFFFF;">
+
+<div>
+
+<h1>Welcome to COMAKE project</h1>
+<h2>Editing {{.Title}} COMAKE</h2>
+
+<form action="/save/{{.Title}}" method="POST">
+<div><textarea name="body" rows="20" cols="80">{{printf "%s" .Body}}</textarea></div>
+<div><input type="submit" value="Save"></div>
+</form>
+</div>
+
+<body>
+</html>
