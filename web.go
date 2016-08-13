@@ -138,7 +138,7 @@ func main() {
 	http.HandleFunc("/save/", makeHandler(saveHandler))
 	http.HandleFunc("/comake/", makeHandler(comakeHandler))
 	http.HandleFunc("/add", addHandler)
-	http.HandleFunc("/index", indexHandler)
+	http.HandleFunc("/", indexHandler)
 
 	http.ListenAndServe(":8080", nil)
 }
