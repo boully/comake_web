@@ -5,6 +5,7 @@
 package main
 
 import (
+	"fmt"
 	"html/template"
 	"io/ioutil"
 	"log"
@@ -115,6 +116,16 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+func addHandler(w http.ResponseWriter, r *http.Request) {
+	title := r.URL.Query().Get("comake")
+	fmt.Println(title)
+	if len(title) != 0 {
+		http.Redirect(w, r, "/edit/"+title, http.StatusFound)
+		return
+	}
+	http.Error(w, "missing comake file name", http.StatusInternalServerError)
+}
+
 func init() {
 	if _, err := os.Stat(fold); os.IsNotExist(err) {
 		os.Mkdir(fold, 0700)
@@ -126,6 +137,7 @@ func main() {
 	http.HandleFunc("/edit/", makeHandler(editHandler))
 	http.HandleFunc("/save/", makeHandler(saveHandler))
 	http.HandleFunc("/comake/", makeHandler(comakeHandler))
+	http.HandleFunc("/add", addHandler)
 	http.HandleFunc("/index", indexHandler)
 
 	http.ListenAndServe(":8080", nil)
